@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Alex",
+      "lastName": "John",
+      "age": 29,
+      "userName": "Alex",
+      "email": "alex@gmail.com"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "task": "Learn React",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "task": "Learn JS",
+      "completed": true
+    }
+  ]
+}
