@@ -1,17 +1,17 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstName": "Alex",
-      "lastName": "John",
-      "age": 29,
-      "userName": "Alex",
-      "email": "alex@gmail.com"
+      "firstName": "1",
+      "lastName": "Andrew_Mebonia",
+      "age": 15321,
+      "userName": "леван",
+      "email": "pigmen.1265@gmail.com",
+      "id": "-YFoNikKo2w"
     }
   ],
   "todos": [
     {
-      "id": 1,
+      "id": "1",
       "task": "Learn React",
       "completed": false
     },
@@ -20,5 +20,6 @@
       "task": "Learn JS",
       "completed": true
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

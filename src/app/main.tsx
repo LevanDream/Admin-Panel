@@ -11,6 +11,7 @@ import "@mantine/notifications/styles.css";
 import { router } from "../routes/router";
 
 const client = new QueryClient();
+
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={client}>
     <MantineProvider>

@@ -1,5 +1,5 @@
-import { Edituser } from "../../components/users/ui/edit-user";
+import { EditUser } from "../../components/users/ui/edit-user";
 
-const EditUserPage = () => <Edituser />;
+const EditUserPage = () => <EditUser />;
 
 export default EditUserPage;
