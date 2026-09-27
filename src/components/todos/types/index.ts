@@ -5,7 +5,6 @@ export type TodosType = {
 };
 
 export type CreateTodoType = {
-  id: number | string;
   task: string;
   completed: boolean;
 };

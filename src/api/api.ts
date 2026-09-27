@@ -9,3 +9,13 @@ export const api = axios.create({
     Accept: "application/json",
   },
 });
+
+const API_URL = "https://jsonplaceholder.typicode.com";
+
+export const http = axios.create({
+  baseURL: API_URL,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+});

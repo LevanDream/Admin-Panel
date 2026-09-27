@@ -1,48 +1,60 @@
+import { Alert, Loader, Modal } from "@mantine/core";
 import { useNavigate, useParams } from "react-router-dom";
+import { TodosForm } from "./todos-form";
 import { useEditTodo, useGetTodoId } from "../queries";
-import { Alert, Card, Loader, Title } from "@mantine/core";
-import type { CreateTodoType } from "../types";
 import { ROUTES } from "../../../routes/routes";
-import { UsersForm } from "../../users/ui/users-form";
+import type { CreateTodoType } from "../types";
 
 export const TodoEdit = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
 
-    const { data: todo, isLoading: isUserLoading, isError } = useGetTodoId(id!);
-    const { mutate: editTodo, isPending: isSaving } = useEditTodo();
+    const { data: todo, isLoading: isFetching, isError, error } = useGetTodoId(id || "");
+    const { mutate: updateTodo, isPending: isUpdating } = useEditTodo();
 
-    if (isUserLoading) return <Loader color="blue" />;
-    if (isError || !todo) {
-        return <Alert color="red">Не удалось загрузить данные пользователя</Alert>;
-    }
+    const handleClose = () => {
+        navigate(ROUTES.TODOS);
+    };
 
-    const handleSubmit = (values: Omit<CreateTodoType, "id">) => {
-        editTodo(
-            { ...values, id: todo.id },
+    const handleSubmit = (values: CreateTodoType) => {
+        if (!id) return;
+
+        updateTodo(
+            { id, ...values },
             {
                 onSuccess: () => {
-                    navigate(ROUTES.TODOS || "/todos");
+                    handleClose();
                 },
             }
         );
     };
 
-
-
     return (
-        <Card withBorder padding="lg" radius="md">
-            <Title order={3} mb="lg">
-                Редактировать пользователя
-            </Title>
-            <UsersForm
-                initialValues={{
-                    task: todo?.task,
-                    completed: todo?.completed,
-                }}
-                onSubmit={handleSubmit}
-                isLoading={isSaving}
-            />
-        </Card>
+        <Modal
+            opened={true}
+            onClose={handleClose}
+            title="Редактирование задачи"
+            centered
+        >
+            {isFetching && <Loader size="sm" />}
+
+            {isError && (
+                <Alert color="red" title="Ошибка загрузки задачи">
+                    {error instanceof Error ? error.message : "Ошибка при получении данных"}
+                </Alert>
+            )}
+
+            {todo && (
+                <TodosForm
+                    initialValues={{
+                        task: todo.task,
+                        completed: todo.completed,
+                    }}
+                    onSubmit={handleSubmit}
+                    isLoading={isUpdating}
+                    onCancel={handleClose}
+                />
+            )}
+        </Modal>
     );
 };

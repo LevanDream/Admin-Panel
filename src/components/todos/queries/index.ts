@@ -3,18 +3,18 @@ import { todosApi } from "../api";
 import type { CreateTodoType, TodosType } from "../types";
 import { notifications } from "@mantine/notifications";
 
-const USER_KEY = ["users"];
+const TODO_KEY = ["todos"];
 
 export const useGetTodos = () => {
     return useQuery({
-        queryKey: USER_KEY,
+        queryKey: TODO_KEY,
         queryFn: todosApi.getTodos,
     });
 };
 
 export const useGetTodoId = (id: number | string) => {
     return useQuery({
-        queryKey: USER_KEY,
+        queryKey: [...TODO_KEY, id],
         queryFn: () => todosApi.getTodoId(id),
         enabled: !!id,
     });
@@ -26,7 +26,7 @@ export const useCreateTodo = () => {
     return useMutation({
         mutationFn: (body: CreateTodoType) => todosApi.createTodo(body),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: USER_KEY });
+            queryClient.invalidateQueries({ queryKey: TODO_KEY });
             notifications.show({
                 title: "Успешно!",
                 message: "Задание добавлено.",
@@ -49,7 +49,7 @@ export const useEditTodo = () => {
     return useMutation({
         mutationFn: (body: TodosType) => todosApi.editTodo(body),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: USER_KEY });
+            queryClient.invalidateQueries({ queryKey: TODO_KEY });
             notifications.show({
                 title: "Успешно!",
                 message: "Задание обновлено.",
@@ -73,7 +73,7 @@ export const useDeleteTodo = () => {
         mutationFn: (id: number | string) => todosApi.deleteTodo(id),
 
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: USER_KEY });
+            queryClient.invalidateQueries({ queryKey: TODO_KEY });
             notifications.show({
                 title: "Успешно!",
                 message: "Задание удалено.",

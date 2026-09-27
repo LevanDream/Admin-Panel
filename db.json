@@ -7,18 +7,44 @@
       "userName": "леван",
       "email": "pigmen.1265@gmail.com",
       "id": "-YFoNikKo2w"
+    },
+    {
+      "firstName": "1",
+      "lastName": "2",
+      "age": 3,
+      "userName": "4",
+      "email": "pigmen.1265@gmail.com",
+      "id": "loGnRha7F4g"
+    },
+    {
+      "firstName": "fds",
+      "lastName": "jhg",
+      "age": 156,
+      "userName": "asda",
+      "email": "pigmen.1265@gmail.com",
+      "id": "AFH_EQYhN0A"
     }
   ],
   "todos": [
     {
-      "id": "1",
       "task": "Learn React",
-      "completed": false
+      "completed": true,
+      "id": "1"
     },
     {
       "id": "2",
-      "task": "Learn JS",
+      "task": "gfte",
       "completed": true
+    },
+    {
+      "task": "431куы",
+      "completed": false,
+      "id": "aSsEl-a4o6o"
+    },
+    {
+      "task": "Task",
+      "completed": true,
+      "id": "7iObnv_fjaA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

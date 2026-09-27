@@ -7,21 +7,21 @@ export const todosApi = {
         return data;
     },
     getTodoId: async (id: number | string): Promise<TodosType> => {
-        const { data } = await api.get<TodosType>(`/users/${id}`);
+        const { data } = await api.get<TodosType>(`/todos/${id}`);
         return data;
     },
 
     createTodo: async (body: CreateTodoType): Promise<TodosType> => {
-        const { data } = await api.post("/users", body);
+        const { data } = await api.post("/todos", body);
         return data;
     },
 
     editTodo: async ({ id, ...body }: TodosType): Promise<TodosType> => {
-        const { data } = await api.put(`/users/${id}`, body);
+        const { data } = await api.put(`/todos/${id}`, body);
         return data;
     },
 
     deleteTodo: async (id: number | string): Promise<void> => {
-        return await api.delete(`/users/${id}`);
+        return await api.delete(`/todos/${id}`);
     },
 };

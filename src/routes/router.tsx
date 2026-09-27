@@ -5,9 +5,9 @@ import UsersPage from "../pages/users";
 import CreateUserPage from "../pages/users/create";
 import HomePage from "../pages/home-page/home-page";
 import { TodosContent } from "../components/todos/ui/todos-content";
-import { CreateTodo } from "../components/todos/ui/create-todo";
 import EditUserPage from "../pages/users/edit";
 import EditTodoPage from "../pages/todos/edit";
+import PostsPage from "../pages/posts";
 
 export const router = createBrowserRouter([
   {
@@ -35,13 +35,13 @@ export const router = createBrowserRouter([
         element: <TodosContent />
       },
       {
-        path: ROUTES.CREATE_TODO,
-        element: <CreateTodo />
+        path: '/todos/edit/:id',
+        element: <EditTodoPage />
       },
       {
-        path: ROUTES.EDIT_TODO,
-        element: <EditTodoPage />
-      }
+        path: ROUTES.POSTS,
+        element: <PostsPage />,
+      },
     ],
   },
 ]);

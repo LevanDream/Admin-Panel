@@ -5,6 +5,7 @@ export const ROUTES = {
   EDIT_USER: "/user/edit/:id",
   TODOS: "/todos",
   CREATE_TODO: "/create-todo",
-  EDIT_TODO: "/edit-todo/:id",
+  EDIT_TODO: "/edit-todo",
+  POSTS: "/posts",
   NOT_FOUND: "*",
 };

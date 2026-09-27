@@ -3,7 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { ROUTES } from "../routes/routes";
-import { Profile2User, ArchiveBook } from "iconsax-reactjs";
+import { Profile2User, ArchiveBook, Book } from "iconsax-reactjs";
 
 const App = () => {
   const [opened, { toggle }] = useDisclosure();
@@ -64,6 +64,14 @@ const App = () => {
             leftSection={<ArchiveBook />}
             active={location.pathname === "/todos"}
             onClick={() => handleNavigate("/todos")}
+            variant="light"
+          />
+
+          <NavLink
+            label="Публикации"
+            leftSection={<Book />}
+            active={location.pathname === "/posts"}
+            onClick={() => handleNavigate("/posts")}
             variant="light"
           />
         </Stack>
